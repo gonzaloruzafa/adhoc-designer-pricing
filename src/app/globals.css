@@ -1,0 +1,132 @@
+@import url('/fonts/fonts.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --adhoc-violet: #7C6CD8;
+  --adhoc-lavender: #BCAFEF;
+  --adhoc-coral: #FF7348;
+  --adhoc-mustard: #FEA912;
+  --foreground-rgb: 31, 41, 55;
+  --background-rgb: 249, 250, 251;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: 'Apercu Pro', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display font for headings */
+h1, h2, h3, .font-display {
+  font-family: 'New Kansas', Georgia, serif;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe area for mobile */
+.safe-area-inset-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+/* Custom animations */
+@keyframes slide-in-from-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-in {
+  animation: slide-in-from-bottom 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out;
+}
+
+/* Focus styles */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--adhoc-violet);
+  outline-offset: 2px;
+}
+
+/* Custom checkbox/chip styles */
+.chip-selected {
+  background: linear-gradient(135deg, var(--adhoc-violet), #9585E0);
+  color: white;
+  box-shadow: 0 4px 12px rgba(124, 108, 216, 0.3);
+}
+
+/* Gradient backgrounds */
+.bg-adhoc-gradient {
+  background: linear-gradient(135deg, var(--adhoc-violet) 0%, #9585E0 100%);
+}
+
+.bg-adhoc-gradient-soft {
+  background: linear-gradient(135deg, rgba(188, 175, 239, 0.2) 0%, rgba(124, 108, 216, 0.1) 100%);
+}
+
+/* Touch feedback */
+@media (hover: none) {
+  .touch-feedback:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+}
+
+/* Service item hover states */
+.service-item {
+  transition: all 0.2s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-1px);
+}
+
+.service-item.selected {
+  background: linear-gradient(135deg, rgba(124, 108, 216, 0.08) 0%, rgba(188, 175, 239, 0.12) 100%);
+  border-color: var(--adhoc-violet);
+}

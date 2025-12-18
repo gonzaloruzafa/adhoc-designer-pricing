@@ -1,0 +1,207 @@
+{
+  "services": [
+    {
+      "key": "logo-design",
+      "title": "Diseño de Logo",
+      "subtitle": "Identidad visual principal",
+      "category": "identidad",
+      "base_min_ars": 45000,
+      "base_max_ars": 120000,
+      "qty_enabled": false,
+      "qty_step": 1
+    },
+    {
+      "key": "brand-manual",
+      "title": "Manual de Marca",
+      "subtitle": "Guía de uso de identidad",
+      "category": "identidad",
+      "base_min_ars": 60000,
+      "base_max_ars": 180000,
+      "qty_enabled": false,
+      "qty_step": 1
+    },
+    {
+      "key": "business-card",
+      "title": "Tarjetas Personales",
+      "subtitle": "Diseño + arte final",
+      "category": "identidad",
+      "base_min_ars": 15000,
+      "base_max_ars": 35000,
+      "qty_enabled": false,
+      "qty_step": 1
+    },
+    {
+      "key": "social-post",
+      "title": "Post para Redes",
+      "subtitle": "Feed / Story individual",
+      "category": "redes",
+      "base_min_ars": 8000,
+      "base_max_ars": 18000,
+      "qty_enabled": true,
+      "qty_step": 1
+    },
+    {
+      "key": "social-pack",
+      "title": "Pack Redes (10 posts)",
+      "subtitle": "Contenido mensual",
+      "category": "redes",
+      "base_min_ars": 55000,
+      "base_max_ars": 120000,
+      "qty_enabled": true,
+      "qty_step": 1
+    },
+    {
+      "key": "carousel",
+      "title": "Carrusel",
+      "subtitle": "Hasta 10 slides",
+      "category": "redes",
+      "base_min_ars": 18000,
+      "base_max_ars": 40000,
+      "qty_enabled": true,
+      "qty_step": 1
+    },
+    {
+      "key": "highlight-covers",
+      "title": "Portadas Destacados",
+      "subtitle": "Set de 5-8 íconos",
+      "category": "redes",
+      "base_min_ars": 12000,
+      "base_max_ars": 28000,
+      "qty_enabled": false,
+      "qty_step": 1
+    },
+    {
+      "key": "landing-page",
+      "title": "Landing Page",
+      "subtitle": "Diseño web una página",
+      "category": "web",
+      "base_min_ars": 80000,
+      "base_max_ars": 200000,
+      "qty_enabled": false,
+      "qty_step": 1
+    },
+    {
+      "key": "website-design",
+      "title": "Sitio Web Completo",
+      "subtitle": "Hasta 5 secciones",
+      "category": "web",
+      "base_min_ars": 150000,
+      "base_max_ars": 400000,
+      "qty_enabled": false,
+      "qty_step": 1
+    },
+    {
+      "key": "email-template",
+      "title": "Template Email",
+      "subtitle": "Newsletter / mailing",
+      "category": "web",
+      "base_min_ars": 25000,
+      "base_max_ars": 55000,
+      "qty_enabled": true,
+      "qty_step": 1
+    },
+    {
+      "key": "presentation",
+      "title": "Presentación",
+      "subtitle": "Hasta 15 slides",
+      "category": "presentaciones",
+      "base_min_ars": 35000,
+      "base_max_ars": 85000,
+      "qty_enabled": false,
+      "qty_step": 1
+    },
+    {
+      "key": "pitch-deck",
+      "title": "Pitch Deck",
+      "subtitle": "Presentación inversores",
+      "category": "presentaciones",
+      "base_min_ars": 70000,
+      "base_max_ars": 180000,
+      "qty_enabled": false,
+      "qty_step": 1
+    },
+    {
+      "key": "slide-template",
+      "title": "Template Slides",
+      "subtitle": "Master editable",
+      "category": "presentaciones",
+      "base_min_ars": 45000,
+      "base_max_ars": 100000,
+      "qty_enabled": false,
+      "qty_step": 1
+    },
+    {
+      "key": "flyer",
+      "title": "Flyer / Volante",
+      "subtitle": "Promocional impreso",
+      "category": "otros",
+      "base_min_ars": 12000,
+      "base_max_ars": 30000,
+      "qty_enabled": true,
+      "qty_step": 1
+    },
+    {
+      "key": "banner-digital",
+      "title": "Banner Digital",
+      "subtitle": "Ads / web banners",
+      "category": "otros",
+      "base_min_ars": 10000,
+      "base_max_ars": 25000,
+      "qty_enabled": true,
+      "qty_step": 1
+    },
+    {
+      "key": "menu-design",
+      "title": "Diseño de Menú",
+      "subtitle": "Carta gastronómica",
+      "category": "otros",
+      "base_min_ars": 30000,
+      "base_max_ars": 70000,
+      "qty_enabled": false,
+      "qty_step": 1
+    },
+    {
+      "key": "packaging",
+      "title": "Packaging",
+      "subtitle": "Diseño de envase",
+      "category": "otros",
+      "base_min_ars": 50000,
+      "base_max_ars": 150000,
+      "qty_enabled": true,
+      "qty_step": 1
+    },
+    {
+      "key": "social-media-strategy",
+      "title": "Estrategia Redes",
+      "subtitle": "Planificación mensual",
+      "category": "redes",
+      "base_min_ars": 40000,
+      "base_max_ars": 90000,
+      "qty_enabled": false,
+      "qty_step": 1
+    }
+  ],
+  "categories": [
+    { "key": "identidad", "label": "Identidad", "emoji": "✨" },
+    { "key": "redes", "label": "Redes", "emoji": "📱" },
+    { "key": "web", "label": "Web", "emoji": "🌐" },
+    { "key": "presentaciones", "label": "Presentaciones", "emoji": "📊" },
+    { "key": "otros", "label": "Otros", "emoji": "🎨" }
+  ],
+  "multipliers": {
+    "clientType": {
+      "particular": { "label": "Particular", "value": 0.85 },
+      "pyme": { "label": "PyME", "value": 1.0 },
+      "grande": { "label": "Grande", "value": 1.35 }
+    },
+    "backAndForth": {
+      "bajo": { "label": "Bajo", "value": 0.95 },
+      "normal": { "label": "Normal", "value": 1.0 },
+      "alto": { "label": "Alto", "value": 1.25 }
+    },
+    "urgency": {
+      "normal": { "label": "Normal", "value": 1.0 },
+      "express": { "label": "Express", "value": 1.3 }
+    }
+  }
+}
