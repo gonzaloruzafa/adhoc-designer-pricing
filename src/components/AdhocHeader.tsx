@@ -17,7 +17,7 @@ export function AdhocHeader() {
             alt="Adhoc" 
             width={100} 
             height={32} 
-            className="h-8 w-auto"
+            style={{ width: 'auto', height: '32px' }}
           />
         </a>
         <span className="px-3 py-1 bg-adhoc-lavender/30 text-adhoc-violet rounded-full text-xs font-medium">

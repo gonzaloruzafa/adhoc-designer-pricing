@@ -41,6 +41,7 @@ export async function saveQuote(
 
     if (error) {
       console.error("❌ Error saving quote:", error);
+      console.error("💡 Si es error 401, ejecutá el SQL de políticas RLS en Supabase");
       return null;
     }
 
@@ -62,7 +63,14 @@ export async function saveQuote(
 }
 
 export async function saveLead(email: string, name?: string, quoteId?: string): Promise<boolean> {
-  console.log("🔍 saveLead called", { email, name, quoteId, isSupabaseConfigured, hasSupabase: !!supabase });
+  console.log("🔍 saveLead called", { 
+    email, 
+    name, 
+    quoteId, 
+    isSupabaseConfigured, 
+    hasSupabase: !!supabase,
+    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL?.substring(0, 30) + '...'
+  });
   
   if (!isSupabaseConfigured || !supabase) {
     console.log("⚠️ Supabase not configured, skipping lead save");
@@ -90,6 +98,7 @@ export async function saveLead(email: string, name?: string, quoteId?: string): 
 
     if (error) {
       console.error("❌ Error saving lead:", error);
+      console.error("💡 Si es error 401, ejecutá el SQL de políticas RLS en Supabase");
       return false;
     }
 
