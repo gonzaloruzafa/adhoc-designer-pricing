@@ -5,8 +5,8 @@
       "title": "Diseño de Logo",
       "subtitle": "Identidad visual principal",
       "category": "identidad",
-      "base_min_ars": 45000,
-      "base_max_ars": 120000,
+      "base_min_ars": 50000,
+      "base_max_ars": 100000,
       "qty_enabled": false,
       "qty_step": 1
     },
@@ -15,8 +15,8 @@
       "title": "Manual de Marca",
       "subtitle": "Guía de uso de identidad",
       "category": "identidad",
-      "base_min_ars": 60000,
-      "base_max_ars": 180000,
+      "base_min_ars": 80000,
+      "base_max_ars": 160000,
       "qty_enabled": false,
       "qty_step": 1
     },
@@ -26,7 +26,7 @@
       "subtitle": "Diseño + arte final",
       "category": "identidad",
       "base_min_ars": 15000,
-      "base_max_ars": 35000,
+      "base_max_ars": 30000,
       "qty_enabled": false,
       "qty_step": 1
     },
@@ -36,7 +36,7 @@
       "subtitle": "Feed / Story individual",
       "category": "redes",
       "base_min_ars": 8000,
-      "base_max_ars": 18000,
+      "base_max_ars": 16000,
       "qty_enabled": true,
       "qty_step": 1
     },
@@ -45,7 +45,7 @@
       "title": "Pack Redes (10 posts)",
       "subtitle": "Contenido mensual",
       "category": "redes",
-      "base_min_ars": 55000,
+      "base_min_ars": 60000,
       "base_max_ars": 120000,
       "qty_enabled": true,
       "qty_step": 1
@@ -55,7 +55,7 @@
       "title": "Carrusel",
       "subtitle": "Hasta 10 slides",
       "category": "redes",
-      "base_min_ars": 18000,
+      "base_min_ars": 20000,
       "base_max_ars": 40000,
       "qty_enabled": true,
       "qty_step": 1
@@ -65,8 +65,8 @@
       "title": "Portadas Destacados",
       "subtitle": "Set de 5-8 íconos",
       "category": "redes",
-      "base_min_ars": 12000,
-      "base_max_ars": 28000,
+      "base_min_ars": 15000,
+      "base_max_ars": 30000,
       "qty_enabled": false,
       "qty_step": 1
     },
@@ -75,7 +75,7 @@
       "title": "Landing Page",
       "subtitle": "Diseño web una página",
       "category": "web",
-      "base_min_ars": 80000,
+      "base_min_ars": 100000,
       "base_max_ars": 200000,
       "qty_enabled": false,
       "qty_step": 1
@@ -85,7 +85,7 @@
       "title": "Sitio Web Completo",
       "subtitle": "Hasta 5 secciones",
       "category": "web",
-      "base_min_ars": 150000,
+      "base_min_ars": 200000,
       "base_max_ars": 400000,
       "qty_enabled": false,
       "qty_step": 1
@@ -95,8 +95,8 @@
       "title": "Template Email",
       "subtitle": "Newsletter / mailing",
       "category": "web",
-      "base_min_ars": 25000,
-      "base_max_ars": 55000,
+      "base_min_ars": 30000,
+      "base_max_ars": 60000,
       "qty_enabled": true,
       "qty_step": 1
     },
@@ -105,8 +105,8 @@
       "title": "Presentación",
       "subtitle": "Hasta 15 slides",
       "category": "presentaciones",
-      "base_min_ars": 35000,
-      "base_max_ars": 85000,
+      "base_min_ars": 40000,
+      "base_max_ars": 80000,
       "qty_enabled": false,
       "qty_step": 1
     },
@@ -115,7 +115,7 @@
       "title": "Pitch Deck",
       "subtitle": "Presentación inversores",
       "category": "presentaciones",
-      "base_min_ars": 70000,
+      "base_min_ars": 90000,
       "base_max_ars": 180000,
       "qty_enabled": false,
       "qty_step": 1
@@ -125,7 +125,7 @@
       "title": "Template Slides",
       "subtitle": "Master editable",
       "category": "presentaciones",
-      "base_min_ars": 45000,
+      "base_min_ars": 50000,
       "base_max_ars": 100000,
       "qty_enabled": false,
       "qty_step": 1
@@ -135,7 +135,7 @@
       "title": "Flyer / Volante",
       "subtitle": "Promocional impreso",
       "category": "otros",
-      "base_min_ars": 12000,
+      "base_min_ars": 15000,
       "base_max_ars": 30000,
       "qty_enabled": true,
       "qty_step": 1
@@ -145,8 +145,8 @@
       "title": "Banner Digital",
       "subtitle": "Ads / web banners",
       "category": "otros",
-      "base_min_ars": 10000,
-      "base_max_ars": 25000,
+      "base_min_ars": 12000,
+      "base_max_ars": 24000,
       "qty_enabled": true,
       "qty_step": 1
     },
@@ -155,7 +155,7 @@
       "title": "Diseño de Menú",
       "subtitle": "Carta gastronómica",
       "category": "otros",
-      "base_min_ars": 30000,
+      "base_min_ars": 35000,
       "base_max_ars": 70000,
       "qty_enabled": false,
       "qty_step": 1
@@ -165,8 +165,8 @@
       "title": "Packaging",
       "subtitle": "Diseño de envase",
       "category": "otros",
-      "base_min_ars": 50000,
-      "base_max_ars": 150000,
+      "base_min_ars": 60000,
+      "base_max_ars": 120000,
       "qty_enabled": true,
       "qty_step": 1
     },
@@ -175,8 +175,8 @@
       "title": "Estrategia Redes",
       "subtitle": "Planificación mensual",
       "category": "redes",
-      "base_min_ars": 40000,
-      "base_max_ars": 90000,
+      "base_min_ars": 50000,
+      "base_max_ars": 100000,
       "qty_enabled": false,
       "qty_step": 1
     }
