@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "¿Cuánto cobrar? | Adhoc",
   description: "Calculadora de precios para diseñadoras argentinas. Cotizá tus trabajos de diseño en segundos.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "¿Cuánto cobrar? | Adhoc",
     description: "Calculadora de precios para diseñadoras argentinas",

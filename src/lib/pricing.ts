@@ -106,7 +106,7 @@ export function calculateQuote(
  */
 export function generateWhatsAppText(result: QuoteResult): string {
   const itemsText = result.items
-    .map((item) => `   ▸ ${item.title}${item.qty > 1 ? ` (x${item.qty})` : ""}`)
+    .map((item) => `✦ ${item.title}${item.qty > 1 ? ` ×${item.qty}` : ""}`)
     .join("\n");
 
   const totalText = formatRange(result.totalMin, result.totalMax);
@@ -116,25 +116,20 @@ export function generateWhatsAppText(result: QuoteResult): string {
     urgency: data.multipliers.urgency[result.settings.urgency]?.label ?? result.settings.urgency,
   };
 
-  return `💰 *MI PRESUPUESTO DE DISEÑO*
-━━━━━━━━━━━━━━━━━━━━━
+  return `💎 *MI PRESUPUESTO DE DISEÑO*
 
-📋 *Servicios incluidos:*
+📦 *Servicios:*
 ${itemsText}
 
-💵 *TOTAL ESTIMADO:*
-*${totalText}*
+💰 *TOTAL:* *${totalText}*
 
-━━━━━━━━━━━━━━━━━━━━━
-📌 Incluye 2 rondas de correcciones
-💳 Seña: 30-50% para arrancar
-⏰ Validez: 7 días
-${settingsLabels.urgency === "Express" ? "🚀 *Entrega Express*\n" : ""}
-━━━━━━━━━━━━━━━━━━━━━
+✅ 2 rondas de correcciones incluidas
+💳 Seña: 30-50% al confirmar
+📅 Validez: 7 días
+${settingsLabels.urgency === "Express" ? "⚡ Entrega Express\n" : ""}
+💬 _Guardá este mensaje para tenerlo a mano_
 
-💬 _Guardá este mensaje para tener tu presupuesto a mano_
-
-✨ Calculá el tuyo acá:`;
+👉 Calculá tu presupuesto:`;
 }
 
 /**
