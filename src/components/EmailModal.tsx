@@ -7,25 +7,28 @@ import { X, Mail, ArrowRight } from "lucide-react";
 interface EmailModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (email: string) => void;
+  onSubmit: (name: string, email: string) => void;
   onSkip: () => void;
 }
 
 export function EmailModal({ isOpen, onClose, onSubmit, onSkip }: EmailModalProps) {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   if (!isOpen) return null;
 
   const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isValidForm = name.trim().length > 0 && isValidEmail;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isValidEmail || isLoading) return;
+    if (!isValidForm || isLoading) return;
     
     setIsLoading(true);
     try {
-      await onSubmit(email);
+      await onSubmit(name, email);
+      setName("");
       setEmail("");
     } catch (error) {
       console.error("Error submitting email:", error);
@@ -62,14 +65,26 @@ export function EmailModal({ isOpen, onClose, onSubmit, onSkip }: EmailModalProp
             <Mail className="w-7 h-7 text-adhoc-violet" />
           </div>
           <h2 className="text-xl font-display font-medium text-gray-900 mb-2">
-            Dejanos tu email
+            Dejanos tus datos
           </h2>
           <p className="text-gray-500 text-sm">
-            Te enviaremos el informe completo con consejos y recomendaciones para tu presupuesto.
+            Te enviaremos el informe completo con consejos y recomendaciones.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <input
+            type="text"
+            placeholder="Tu nombre"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className={cn(
+              "w-full px-4 py-3 rounded-xl border-2 transition-colors",
+              "text-gray-900 placeholder:text-gray-400",
+              "focus:outline-none focus:border-adhoc-violet border-gray-200"
+            )}
+            autoFocus
+          />
           <input
             type="email"
             placeholder="tu@email.com"
@@ -83,16 +98,15 @@ export function EmailModal({ isOpen, onClose, onSubmit, onSkip }: EmailModalProp
                 ? "border-adhoc-coral/50"
                 : "border-gray-200"
             )}
-            autoFocus
           />
 
           <button
             type="submit"
-            disabled={!isValidEmail || isLoading}
+            disabled={!isValidForm || isLoading}
             className={cn(
               "w-full py-4 rounded-xl font-bold transition-all duration-200 touch-feedback",
               "flex items-center justify-center gap-2",
-              isValidEmail && !isLoading
+              isValidForm && !isLoading
                 ? "bg-adhoc-gradient text-white shadow-lg shadow-adhoc-violet/30"
                 : "bg-gray-100 text-gray-400 cursor-not-allowed"
             )}

@@ -53,12 +53,28 @@ export function ShareButtons({ result, shareSlug, onEmailClick }: ShareButtonsPr
 
   return (
     <div className="space-y-3">
+      {/* Tip bubble */}
+      <div className="bg-[#25D366]/10 border border-[#25D366]/20 rounded-xl p-3 flex items-start gap-3">
+        <div className="w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
+          <MessageCircle className="w-4 h-4 text-white" />
+        </div>
+        <div>
+          <p className="text-sm text-gray-700 font-medium">💡 Tip: Guardalo en WhatsApp</p>
+          <p className="text-xs text-gray-500">Mandátelo a vos mismo para tenerlo siempre a mano</p>
+        </div>
+      </div>
+
       {/* Primary actions */}
       <div className="grid grid-cols-2 gap-3">
         <button
           onClick={handleOpenWhatsApp}
-          className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-medium transition-all duration-200 touch-feedback bg-[#25D366] text-white hover:bg-[#20BA5A]"
+          className="relative flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-medium transition-all duration-200 touch-feedback bg-[#25D366] text-white hover:bg-[#20BA5A] hover:scale-105"
         >
+          {/* Animated droplet indicator */}
+          <span className="absolute -top-1 -right-1 flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#25D366]"></span>
+          </span>
           <MessageCircle className="w-5 h-5" />
           WhatsApp
         </button>
@@ -85,15 +101,6 @@ export function ShareButtons({ result, shareSlug, onEmailClick }: ShareButtonsPr
           )}
         </button>
       </div>
-
-      {/* Secondary action */}
-      <button
-        onClick={onEmailClick}
-        className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-medium bg-white border border-gray-200 text-gray-600 hover:border-adhoc-lavender hover:text-adhoc-violet transition-colors touch-feedback"
-      >
-        <Mail className="w-5 h-5" />
-        Recibir informe completo por email
-      </button>
     </div>
   );
 }

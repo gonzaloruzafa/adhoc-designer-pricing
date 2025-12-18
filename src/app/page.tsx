@@ -34,7 +34,9 @@ export default function Home() {
     quoteId,
     setShareInfo,
     email,
+    name,
     setEmail,
+    setName,
     step,
     setStep,
     resetQuote,
@@ -65,12 +67,15 @@ export default function Home() {
 
   const handleGoToAdjust = () => {
     if (selectedItems.length === 0) return;
-    // Mostrar email modal antes de continuar al paso 2
-    if (!email) {
+    
+    // Siempre mostrar modal de email en el primer paso
+    if (!emailCapturedBefore) {
       setShowEmailModal(true);
-    } else {
-      setStep("adjust");
+      return;
     }
+    
+    // Si ya capturó email antes, ir directo a adjust
+    setStep("adjust");
   };
 
   const handleGoToResult = async () => {
@@ -78,7 +83,9 @@ export default function Home() {
     setResult(calculatedResult);
 
     // Guardar cotización con email si existe
+    console.log("💾 Saving quote with email:", email);
     const saved = await saveQuote(calculatedResult, email || null);
+    console.log("✅ Quote saved:", saved);
     if (saved) {
       setShareInfo(saved.shareSlug, saved.quoteId);
     }
@@ -86,41 +93,27 @@ export default function Home() {
     setStep("result");
   };
 
-  const handleEmailSubmit = async (submittedEmail: string) => {
+  const handleEmailSubmit = async (submittedName: string, submittedEmail: string) => {
+    // Guardar email y nombre en el store
+    setName(submittedName);
     setEmail(submittedEmail);
-    setShowEmailModal(false);
     setEmailCapturedBefore(true);
+    
+    // Cerrar modal
+    setShowEmailModal(false);
 
-    // Guardar lead inmediatamente al capturar email
-    await saveLead(submittedEmail);
+    // Guardar lead inmediatamente
+    console.log("💾 Saving lead:", submittedName, submittedEmail);
+    const saved = await saveLead(submittedEmail, submittedName);
+    console.log("✅ Lead saved:", saved);
 
-    // Si ya hay resultado, guardar quote con email
-    if (result) {
-      const saved = await saveQuote(result, submittedEmail);
-      if (saved) {
-        setShareInfo(saved.shareSlug, saved.quoteId);
-      }
-      setStep("result");
-    } else {
-      // Si no hay resultado, continuar al paso de ajustes
-      setStep("adjust");
-    }
+    // Continuar al paso de ajustes
+    setStep("adjust");
   };
 
-  const handleEmailSkip = async () => {
+  const handleEmailSkip = () => {
     setShowEmailModal(false);
-
-    // Si ya hay resultado, guardar y mostrar
-    if (result) {
-      const saved = await saveQuote(result, null);
-      if (saved) {
-        setShareInfo(saved.shareSlug, saved.quoteId);
-      }
-      setStep("result");
-    } else {
-      // Si no hay resultado, continuar al paso de ajustes
-      setStep("adjust");
-    }
+    setStep("adjust");
   };
 
   const handleBack = () => {
@@ -189,6 +182,13 @@ export default function Home() {
           onClick={handleGoToAdjust}
           disabled={selectedItems.length === 0}
           count={selectedItems.length}
+        />
+
+        <EmailModal
+          isOpen={showEmailModal}
+          onClose={() => setShowEmailModal(false)}
+          onSubmit={handleEmailSubmit}
+          onSkip={handleEmailSkip}
         />
       </div>
     );

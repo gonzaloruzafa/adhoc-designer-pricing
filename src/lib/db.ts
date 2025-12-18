@@ -6,8 +6,10 @@ export async function saveQuote(
   result: QuoteResult,
   email?: string | null
 ): Promise<{ shareSlug: string; quoteId: string } | null> {
+  console.log("🔍 saveQuote called", { isSupabaseConfigured, hasSupabase: !!supabase, email });
+  
   if (!isSupabaseConfigured || !supabase) {
-    console.log("Supabase not configured, skipping save");
+    console.log("⚠️ Supabase not configured, using local fallback");
     // En modo desarrollo sin Supabase, generar un shareSlug local
     return {
       shareSlug: generateShareSlug(),
@@ -18,9 +20,11 @@ export async function saveQuote(
   const deviceId = getDeviceId();
   const shareSlug = generateShareSlug();
 
+  console.log("📤 Inserting quote to Supabase...", { deviceId, shareSlug });
+
   try {
     const { data, error } = await supabase
-      .from("quotes")
+      .from("designer-pricing-quotes")
       .insert({
         device_id: deviceId,
         email: email || null,
@@ -36,13 +40,15 @@ export async function saveQuote(
       .single();
 
     if (error) {
-      console.error("Error saving quote:", error);
+      console.error("❌ Error saving quote:", error);
       return null;
     }
 
-    // Si hay email, guardar/actualizar lead
+    console.log("✅ Quote saved successfully!", { quoteId: data.id, shareSlug });
+
+    // Si hay email, guardar/actualizar lead (sin nombre, ya se guardó antes)
     if (email) {
-      await saveLead(email, data.id);
+      await saveLead(email, undefined, data.id);
     }
 
     return {
@@ -50,24 +56,29 @@ export async function saveQuote(
       quoteId: data.id,
     };
   } catch (err) {
-    console.error("Error saving quote:", err);
+    console.error("❌ Exception saving quote:", err);
     return null;
   }
 }
 
-export async function saveLead(email: string, quoteId?: string): Promise<boolean> {
+export async function saveLead(email: string, name?: string, quoteId?: string): Promise<boolean> {
+  console.log("🔍 saveLead called", { email, name, quoteId, isSupabaseConfigured, hasSupabase: !!supabase });
+  
   if (!isSupabaseConfigured || !supabase) {
-    console.log("Supabase not configured, skipping lead save");
+    console.log("⚠️ Supabase not configured, skipping lead save");
     return true;
   }
 
   const deviceId = getDeviceId();
 
+  console.log("📤 Upserting lead to Supabase...", { email, name, deviceId });
+
   try {
     const { error } = await supabase
-      .from("leads")
+      .from("designer-pricing-leads")
       .upsert(
         {
+          name: name || null,
           email: email.toLowerCase().trim(),
           device_id: deviceId,
           last_quote_id: quoteId || null,
@@ -78,10 +89,11 @@ export async function saveLead(email: string, quoteId?: string): Promise<boolean
       );
 
     if (error) {
-      console.error("Error saving lead:", error);
+      console.error("❌ Error saving lead:", error);
       return false;
     }
 
+    console.log("✅ Lead saved successfully!");
     return true;
   } catch (err) {
     console.error("Error saving lead:", err);
@@ -97,7 +109,7 @@ export async function getQuoteByShareSlug(shareSlug: string): Promise<Quote | nu
 
   try {
     const { data, error } = await supabase
-      .from("quotes")
+      .from("designer-pricing-quotes")
       .select("*")
       .eq("share_slug", shareSlug)
       .single();
@@ -122,7 +134,7 @@ export async function updateQuoteEmail(quoteId: string, email: string): Promise<
 
   try {
     const { error } = await supabase
-      .from("quotes")
+      .from("designer-pricing-quotes")
       .update({ email: email.toLowerCase().trim() })
       .eq("id", quoteId);
 

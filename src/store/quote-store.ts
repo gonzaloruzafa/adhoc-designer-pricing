@@ -25,9 +25,11 @@ interface QuoteStore {
   quoteId: string | null;
   setShareInfo: (shareSlug: string, quoteId: string) => void;
 
-  // Email
+  // Email and Name
   email: string | null;
+  name: string | null;
   setEmail: (email: string) => void;
+  setName: (name: string) => void;
 
   // Estado UI
   step: "select" | "adjust" | "result";
@@ -95,9 +97,11 @@ export const useQuoteStore = create<QuoteStore>()(
       quoteId: null,
       setShareInfo: (shareSlug, quoteId) => set({ shareSlug, quoteId }),
 
-      // Email
+      // Email and Name
       email: null,
+      name: null,
       setEmail: (email) => set({ email }),
+      setName: (name) => set({ name }),
 
       // Estado UI
       step: "select",
@@ -118,6 +122,7 @@ export const useQuoteStore = create<QuoteStore>()(
       name: "adhoc-quote-storage",
       partialize: (state) => ({
         email: state.email,
+        name: state.name,
       }),
     }
   )
