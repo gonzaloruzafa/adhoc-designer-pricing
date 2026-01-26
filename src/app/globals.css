@@ -100,6 +100,26 @@ input:focus-visible {
   box-shadow: 0 4px 12px rgba(124, 108, 216, 0.3);
 }
 
+.glass-card-premium {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card-premium::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+}
+
 /* Gradient backgrounds */
 .bg-adhoc-gradient {
   background: linear-gradient(135deg, var(--adhoc-violet) 0%, #9585E0 100%);
@@ -119,14 +139,15 @@ input:focus-visible {
 
 /* Service item hover states */
 .service-item {
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-item:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(124, 108, 216, 0.2);
 }
 
 .service-item.selected {
-  background: linear-gradient(135deg, rgba(124, 108, 216, 0.08) 0%, rgba(188, 175, 239, 0.12) 100%);
+  background: linear-gradient(135deg, rgba(124, 108, 216, 0.05) 0%, rgba(188, 175, 239, 0.08) 100%);
   border-color: var(--adhoc-violet);
 }

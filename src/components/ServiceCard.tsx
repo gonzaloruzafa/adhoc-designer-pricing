@@ -24,26 +24,26 @@ export function ServiceCard({
   return (
     <div
       className={cn(
-        "service-item relative rounded-xl p-3 cursor-pointer touch-feedback",
-        "border-2 bg-white",
+        "service-item relative rounded-2xl p-4 cursor-pointer touch-feedback overflow-hidden",
+        "border-2 transition-all duration-300",
         isSelected
-          ? "selected border-adhoc-violet"
-          : "border-gray-100 hover:border-gray-200"
+          ? "selected border-adhoc-violet bg-adhoc-lavender/5 shadow-premium"
+          : "border-gray-50 bg-white hover:border-gray-200"
       )}
       onClick={onToggle}
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         {/* Checkbox / emoji */}
         <div
           className={cn(
-            "w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-all",
+            "w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-500",
             isSelected
-              ? "bg-adhoc-violet text-white"
-              : "bg-gray-100 text-lg"
+              ? "bg-adhoc-violet text-white scale-110 shadow-lg shadow-adhoc-violet/20"
+              : "bg-gray-50 text-xl grayscale-[0.5]"
           )}
         >
           {isSelected ? (
-            <Check className="w-4 h-4" strokeWidth={3} />
+            <Check className="w-5 h-5" strokeWidth={3} />
           ) : (
             categoryEmoji
           )}
@@ -51,24 +51,27 @@ export function ServiceCard({
 
         {/* Content */}
         <div className="flex-1 min-w-0">
-          <h3 className="font-medium text-gray-900 text-sm leading-tight truncate">
+          <h3 className={cn(
+            "font-semibold text-sm leading-tight transition-colors duration-300",
+            isSelected ? "text-adhoc-violet" : "text-gray-800"
+          )}>
             {service.title}
           </h3>
-          <p className="text-xs text-gray-400 truncate">{service.subtitle}</p>
+          <p className="text-[11px] text-gray-400 mt-0.5 line-clamp-1">{service.subtitle}</p>
         </div>
 
         {/* Quantity controls */}
         {isSelected && service.qty_enabled && (
           <div
-            className="flex items-center gap-2"
+            className="flex items-center gap-3 bg-white/50 backdrop-blur-sm rounded-full p-1 border border-white"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               className={cn(
-                "w-7 h-7 rounded-full flex items-center justify-center transition-colors",
+                "w-7 h-7 rounded-full flex items-center justify-center transition-all active:scale-90",
                 quantity <= 1
                   ? "bg-gray-100 text-gray-300"
-                  : "bg-adhoc-lavender/30 text-adhoc-violet hover:bg-adhoc-lavender/50 active:bg-adhoc-lavender"
+                  : "bg-adhoc-lavender/20 text-adhoc-violet hover:bg-adhoc-lavender/40"
               )}
               onClick={(e) => {
                 e.stopPropagation();
@@ -76,30 +79,23 @@ export function ServiceCard({
               }}
               disabled={quantity <= 1}
             >
-              <Minus className="w-3 h-3" />
+              <Minus className="w-3.5 h-3.5" />
             </button>
-            
-            <span className="font-bold text-sm text-adhoc-violet min-w-[1.5rem] text-center">
+
+            <span className="font-bold text-xs text-adhoc-violet min-w-[1rem] text-center">
               {quantity}
             </span>
-            
+
             <button
-              className="w-7 h-7 rounded-full bg-adhoc-lavender/30 text-adhoc-violet hover:bg-adhoc-lavender/50 active:bg-adhoc-lavender flex items-center justify-center transition-colors"
+              className="w-7 h-7 rounded-full bg-adhoc-lavender/20 text-adhoc-violet hover:bg-adhoc-lavender/40 active:scale-90 flex items-center justify-center transition-all"
               onClick={(e) => {
                 e.stopPropagation();
                 onQuantityChange(quantity + 1);
               }}
             >
-              <Plus className="w-3 h-3" />
+              <Plus className="w-3.5 h-3.5" />
             </button>
           </div>
-        )}
-
-        {/* Quantity badge for non-selected qty items */}
-        {!isSelected && service.qty_enabled && (
-          <span className="text-[10px] text-gray-300 flex items-center gap-0.5">
-            <Plus className="w-2.5 h-2.5" />
-          </span>
         )}
       </div>
     </div>
